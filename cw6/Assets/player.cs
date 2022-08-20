@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class NewBehaviourScript : MonoBehaviour
 {
@@ -9,13 +10,13 @@ public class NewBehaviourScript : MonoBehaviour
     public float minpos;
     public float maxpos;
 
-    // Start is called before the first frame update
+    public AudioSource src;
+
     void Start()
     {
-        
+        src = GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         move(); 
@@ -34,6 +35,18 @@ public class NewBehaviourScript : MonoBehaviour
 
         } 
 
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "enemy")
+        {
+            src.Play();
+            Invoke("Restart", 5f);
+        }
+    }
+    void Restart()
+    {
+           SceneManager.LoadScene(0);
     }
 
 }
