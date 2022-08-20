@@ -38,4 +38,5 @@ public class gameControler : MonoBehaviour
             Instantiate(enemy, Spawnr);
         }
     }
+}
 

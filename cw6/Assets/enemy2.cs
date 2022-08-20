@@ -22,4 +22,5 @@ public class enemy2 : MonoBehaviour
     {
 
     }
+
 }
